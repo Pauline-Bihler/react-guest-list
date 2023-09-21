@@ -3,10 +3,31 @@ import React, { useState } from 'react';
 export default function GuestListForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [showNames, setShowNames] = useState(false);
+  const [guestList, setGuestList] = useState([]); // Use an array to store guest information
+  const [isAttending, setIsAttending] = useState(false);
 
+  // Return button
   const addGuest = () => {
-    setShowNames(true);
+    if (firstName.trim() !== '' && lastName.trim() !== '') {
+      const newGuest = {
+        firstName,
+        lastName,
+        isAttending,
+      };
+
+      // Add the new guest to the array using spread operator
+      setGuestList([...guestList, newGuest]);
+      setFirstName('');
+      setLastName('');
+      setIsAttending(false);
+    }
+  };
+
+  // Change the attendance of a specific guest
+  const attendanceChange = (index) => {
+    const updatedGuestList = [...guestList];
+    updatedGuestList[index].isAttending = !updatedGuestList[index].isAttending;
+    setGuestList(updatedGuestList);
   };
 
   return (
@@ -38,14 +59,27 @@ export default function GuestListForm() {
         <div className="return">
           <button onClick={addGuest}>Return</button>
         </div>
-        {showNames && (
-          <div>
+        {guestList.map((guest, index) => (
+          <div key={`guest-${index.id}`} data-test-id="guest">
             <p>
-              Guest Name: {firstName} {lastName}
+              Guest Name: {guest.firstName} {guest.lastName}
             </p>
-            {/* <p>Last Name: {lastName}</p> */}
+            <p>Status: {guest.isAttending ? 'Attending' : 'Not Attending'}</p>
+            <label>
+              Change Attendance:
+              <input
+                type="checkbox"
+                checked={guest.isAttending}
+                onChange={() => attendanceChange(index)} // Pass the index
+              />
+            </label>
+            <br />
+            <br />
+            <div className="remove">
+              <button>Remove</button>
+            </div>
           </div>
-        )}
+        ))}
       </div>
     </main>
   );
