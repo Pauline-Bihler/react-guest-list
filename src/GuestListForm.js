@@ -30,6 +30,13 @@ export default function GuestListForm() {
     setGuestList(updatedGuestList);
   };
 
+  // Remove a guest
+  const removeGuest = (index) => {
+    const updatedGuestList = [...guestList];
+    updatedGuestList.splice(index, 1); // Remove the guest at the specified index
+    setGuestList(updatedGuestList);
+  };
+
   return (
     <main>
       <div>
@@ -73,10 +80,8 @@ export default function GuestListForm() {
                 onChange={() => attendanceChange(index)} // Pass the index
               />
             </label>
-            <br />
-            <br />
             <div className="remove">
-              <button>Remove</button>
+              <button onClick={() => removeGuest(index)}>Remove</button>
             </div>
           </div>
         ))}
