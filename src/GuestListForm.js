@@ -7,7 +7,8 @@ export default function GuestListForm() {
   const [isAttending, setIsAttending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [disabledInputs, setDisabledInputs] = useState(false);
-  const baseUrl = 'http://localhost:3000/';
+  const baseUrl =
+    'https://express-guest-list-api-memory-data-store--pauline-bihler.repl.co/';
 
   // Function to fetch all guests
   const fetchAllGuests = async () => {
@@ -166,7 +167,7 @@ export default function GuestListForm() {
           <input
             value={firstName}
             id="firstName"
-            disabled={disabledInputs || isLoading}
+            disabled={disabledInputs}
             onChange={(event) => setFirstName(event.target.value)}
           />
         </form>
@@ -176,7 +177,7 @@ export default function GuestListForm() {
           <input
             value={lastName}
             id="lastName"
-            disabled={disabledInputs || isLoading}
+            disabled={disabledInputs}
             onChange={(event) => setLastName(event.target.value)}
           />
         </form>
