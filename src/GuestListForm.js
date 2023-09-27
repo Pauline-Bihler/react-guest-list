@@ -140,7 +140,7 @@ export default function GuestListForm() {
       });
 
       // Update the state to remove the guest
-      const updatedGuestList = guestList.filter((_, i) => i !== index);
+      const updatedGuestList = guestList.filter((element, i) => i !== index);
       setGuestList(updatedGuestList);
 
       if (!response.ok) {
@@ -171,7 +171,8 @@ export default function GuestListForm() {
           <input
             value={firstName}
             id="firstName"
-            disabled={disabledInputs}
+            disabled={disabledInputs === isLoading}
+            // disabled={disabledInputs}
             onChange={(event) => setFirstName(event.target.value)}
           />
         </form>
@@ -181,7 +182,8 @@ export default function GuestListForm() {
           <input
             value={lastName}
             id="lastName"
-            disabled={disabledInputs}
+            disabled={disabledInputs === isLoading}
+            // disabled={disabledInputs}
             onChange={(event) => setLastName(event.target.value)}
           />
         </form>
