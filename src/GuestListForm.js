@@ -7,12 +7,17 @@ export default function GuestListForm() {
   const [isAttending, setIsAttending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [disabledInputs, setDisabledInputs] = useState(false);
-  const baseUrl = 'http://localhost:3000/';
+  // const baseUrl = 'http://localhost:3000/';
+  // const baseUrl =
+  //   'http://express-guest-list-api-memory-data-store--pauline-bihler.repl.co/guests/';
+
+  const baseUrl =
+    'https://express-guest-list-api-memory-data-store--pauline-bihler.repl.co';
 
   // Function to fetch all guests
   const fetchAllGuests = async () => {
     try {
-      const response = await fetch(`${baseUrl}/guests`);
+      const response = await fetch(`${baseUrl}guests`); // removed / in this code (`${baseUrl}/guests`)
       if (!response.ok) {
         throw new Error('Error fetching all guests');
       }
