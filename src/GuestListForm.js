@@ -191,6 +191,7 @@ export default function GuestListForm() {
         <div className="return">
           <button onClick={addGuest}>Return</button>
         </div>
+        {isLoading ? 'Loading...' : ''}
         {guestList.map((guest, index) => (
           <div key={`guest-${index.id}`} data-test-id="guest">
             <p>
