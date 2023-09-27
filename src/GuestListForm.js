@@ -167,7 +167,7 @@ export default function GuestListForm() {
       <p> Add a guest here:</p>
       <div>
         <form onSubmit={(event) => event.preventDefault()}>
-          <label htmlFor="firstName">First Name:</label>
+          <label htmlFor="First name">First Name:</label>
           <input
             value={firstName}
             id="firstName"
@@ -178,7 +178,7 @@ export default function GuestListForm() {
         </form>
         <br />
         <form onSubmit={(event) => event.preventDefault()}>
-          <label htmlFor="lastName">Last Name:</label>
+          <label htmlFor="Last name">Last Name:</label>
           <input
             value={lastName}
             id="lastName"
