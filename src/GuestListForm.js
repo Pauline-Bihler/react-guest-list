@@ -170,7 +170,7 @@ export default function GuestListForm() {
         <label htmlFor="First name">First Name:</label>
         <input
           value={firstName}
-          id="firstName"
+          id="First name"
           disabled={disabledInputs === isLoading}
           // disabled={disabledInputs}
           onChange={(event) => setFirstName(event.target.value)}
@@ -181,7 +181,7 @@ export default function GuestListForm() {
         <label htmlFor="Last name">Last Name:</label>
         <input
           value={lastName}
-          id="lastName"
+          id="Last name"
           disabled={disabledInputs === isLoading}
           // disabled={disabledInputs}
           onChange={(event) => setLastName(event.target.value)}
