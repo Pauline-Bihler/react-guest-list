@@ -165,53 +165,53 @@ export default function GuestListForm() {
         <br />
       </div>
       <p> Add a guest here:</p>
-      <div>
-        <form onSubmit={(event) => event.preventDefault()}>
-          <label htmlFor="First name">First Name:</label>
-          <input
-            value={firstName}
-            id="firstName"
-            disabled={disabledInputs === isLoading}
-            // disabled={disabledInputs}
-            onChange={(event) => setFirstName(event.target.value)}
-          />
-        </form>
-        <br />
-        <form onSubmit={(event) => event.preventDefault()}>
-          <label htmlFor="Last name">Last Name:</label>
-          <input
-            value={lastName}
-            id="lastName"
-            disabled={disabledInputs === isLoading}
-            // disabled={disabledInputs}
-            onChange={(event) => setLastName(event.target.value)}
-          />
-        </form>
-        <br />
-        <div className="return">
-          <button onClick={addGuest}>Return</button>
-        </div>
-        {isLoading ? 'Loading...' : ''}
-        {guestList.map((guest, index) => (
-          <div key={`guest-${index.id}`} data-test-id="guest">
-            <p>
-              Guest Name: {guest.firstName} {guest.lastName}
-            </p>
-            <p>Status: {guest.isAttending ? 'Attending' : 'Not Attending'}</p>
-            <label>
-              Change Attendance:
-              <input
-                type="checkbox"
-                checked={guest.isAttending}
-                onChange={() => attendanceChange(index)} // Pass the index
-              />
-            </label>
-            <div className="remove">
-              <button onClick={() => removeGuest(index)}>Remove</button>
-            </div>
-          </div>
-        ))}
+      {/* <div> */}
+      <form onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="First name">First Name:</label>
+        <input
+          value={firstName}
+          id="firstName"
+          disabled={disabledInputs === isLoading}
+          // disabled={disabledInputs}
+          onChange={(event) => setFirstName(event.target.value)}
+        />
+      </form>
+      <br />
+      <form onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="Last name">Last Name:</label>
+        <input
+          value={lastName}
+          id="lastName"
+          disabled={disabledInputs === isLoading}
+          // disabled={disabledInputs}
+          onChange={(event) => setLastName(event.target.value)}
+        />
+      </form>
+      <br />
+      <div className="return">
+        <button onClick={addGuest}>Return</button>
       </div>
+      {isLoading ? 'Loading...' : ''}
+      {guestList.map((guest, index) => (
+        <div key={`guest-${index.id}`} data-test-id="guest">
+          <p>
+            Guest Name: {guest.firstName} {guest.lastName}
+          </p>
+          <p>Status: {guest.isAttending ? 'Attending' : 'Not Attending'}</p>
+          <label>
+            Change Attendance:
+            <input
+              type="checkbox"
+              checked={guest.isAttending}
+              onChange={() => attendanceChange(index)} // Pass the index
+            />
+          </label>
+          <div className="remove">
+            <button onClick={() => removeGuest(index)}>Remove</button>
+          </div>
+        </div>
+      ))}
+      {/* </div> */}
     </main>
   );
 }
