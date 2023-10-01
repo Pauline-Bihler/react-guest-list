@@ -47,6 +47,7 @@ export default function GuestListForm() {
       try {
         // Create a new guest object based on the form inputs
         const newGuest = {
+          // id: guestList.length,
           firstName: firstName,
           lastName: lastName,
           isAttending: isAttending,
@@ -130,22 +131,26 @@ export default function GuestListForm() {
   // };
 
   // Remove a guest
-  const removeGuest = async (index) => {
+  const removeGuest = async (id) => {
     try {
-      const guestToDelete = guestList[index];
+      // const guestToDelete = guestList[index];
 
       // Send the DELETE request to the API
-      const response = await fetch(`${baseUrl}/guests/${guestToDelete.id}`, {
+      const response = await fetch(`${baseUrl}/guests/${id}`, {
         method: 'DELETE',
       });
-
-      // Update the state to remove the guest
-      const updatedGuestList = guestList.filter((element, i) => i !== index);
-      setGuestList(updatedGuestList);
-
+      console.log(await response.json());
       if (!response.ok) {
         throw new Error('Error deleting guest');
       }
+
+      // Update the state to remove the guest
+      const updatedGuestList = guestList.filter((element) => element.id !== id);
+      setGuestList(updatedGuestList);
+
+      // if (!response.ok) {
+      //   throw new Error('Error deleting guest');
+      // }
     } catch (error) {
       console.error('Error removing guest:', error);
     }
@@ -158,6 +163,7 @@ export default function GuestListForm() {
   //   setGuestList(updatedGuestList);
   // };
 
+  console.log(guestList);
   return (
     <main>
       <div>
@@ -207,7 +213,11 @@ export default function GuestListForm() {
             />
           </label>
           <div className="remove">
-            <button id="Remove" onClick={() => removeGuest(index)}>
+            <button
+              aria-label="Remove"
+              key={`user-id-${guest.id} `}
+              onClick={() => removeGuest(guest.id)}
+            >
               Remove
             </button>
           </div>
