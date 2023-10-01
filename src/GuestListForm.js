@@ -6,7 +6,7 @@ export default function GuestListForm() {
   const [guestList, setGuestList] = useState([]);
   const [isAttending, setIsAttending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [disabledInputs, setDisabledInputs] = useState(false);
+  // const [disabledInputs, setDisabledInputs] = useState(false);
   // const baseUrl = 'http://localhost:3000/';
   // const baseUrl =
   //   'http://express-guest-list-api-memory-data-store--pauline-bihler.repl.co/guests/';
@@ -17,14 +17,14 @@ export default function GuestListForm() {
   // Function to fetch all guests
   const fetchAllGuests = async () => {
     try {
-      const response = await fetch(`${baseUrl}guests`); // removed / in this code (`${baseUrl}/guests`)
+      const response = await fetch(`${baseUrl}/guests/`); // removed / in this code (`${baseUrl}/guests`)
       if (!response.ok) {
         throw new Error('Error fetching all guests');
       }
       const allGuests = await response.json();
       setGuestList(allGuests);
       setIsLoading(false); // Set isLoading to false when data is loaded
-      setDisabledInputs(false); // Set disabledInputs to false when data is loaded
+      // setDisabledInputs(false); // Set disabledInputs to false when data is loaded
     } catch (error) {
       console.error('Error fetching all guests:', error);
     }
@@ -59,7 +59,7 @@ export default function GuestListForm() {
         setIsAttending(false);
 
         // Send the POST request to the API
-        const response = await fetch(`${baseUrl}/guests`, {
+        const response = await fetch(`${baseUrl}/guests/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -167,22 +167,22 @@ export default function GuestListForm() {
       <p> Add a guest here:</p>
       {/* <div> */}
       <form onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="First name">First Name:</label>
+        <label htmlFor="First name">First name</label>
         <input
           value={firstName}
           id="First name"
-          disabled={disabledInputs === isLoading}
+          // disabled={disabledInputs === isLoading}
           // disabled={disabledInputs}
           onChange={(event) => setFirstName(event.target.value)}
         />
       </form>
       <br />
       <form onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="Last name">Last Name:</label>
+        <label htmlFor="Last name">Last name</label>
         <input
           value={lastName}
           id="Last name"
-          disabled={disabledInputs === isLoading}
+          // disabled={disabledInputs === isLoading}
           // disabled={disabledInputs}
           onChange={(event) => setLastName(event.target.value)}
         />
