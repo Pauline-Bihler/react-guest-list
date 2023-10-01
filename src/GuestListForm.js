@@ -71,6 +71,7 @@ export default function GuestListForm() {
         if (!response.ok) {
           throw new Error('Error creating guest');
         }
+        await fetchAllGuests();
       } catch (error) {
         console.error('Error adding guest:', error);
       }
