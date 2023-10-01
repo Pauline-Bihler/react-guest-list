@@ -207,7 +207,9 @@ export default function GuestListForm() {
             />
           </label>
           <div className="remove">
-            <button onClick={() => removeGuest(index)}>Remove</button>
+            <button id="Remove" onClick={() => removeGuest(index)}>
+              Remove
+            </button>
           </div>
         </div>
       ))}
