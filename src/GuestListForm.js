@@ -171,7 +171,7 @@ export default function GuestListForm() {
         <input
           value={firstName}
           id="First name"
-          // disabled={disabledInputs === isLoading}
+          disabled={isLoading}
           // disabled={disabledInputs}
           onChange={(event) => setFirstName(event.target.value)}
         />
@@ -182,7 +182,7 @@ export default function GuestListForm() {
         <input
           value={lastName}
           id="Last name"
-          // disabled={disabledInputs === isLoading}
+          disabled={isLoading}
           // disabled={disabledInputs}
           onChange={(event) => setLastName(event.target.value)}
         />
