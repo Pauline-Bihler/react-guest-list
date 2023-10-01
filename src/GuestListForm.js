@@ -140,7 +140,7 @@ export default function GuestListForm() {
       const response = await fetch(`${baseUrl}/guests/${id}`, {
         method: 'DELETE',
       });
-      console.log(await response.json());
+      // console.log(await response.json());
       if (!response.ok) {
         throw new Error('Error deleting guest');
       }
@@ -164,7 +164,7 @@ export default function GuestListForm() {
   //   setGuestList(updatedGuestList);
   // };
 
-  console.log(guestList);
+  // console.log(guestList);
   return (
     <main>
       <div>
